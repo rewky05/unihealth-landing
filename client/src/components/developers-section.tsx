@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import aprilImg from "../../../attached_assets/april.png";
-import matImg from "../../../attached_assets/mat.png";
-import melImg from "../../../attached_assets/mel.jpg";
+import { Button } from "@/components/ui/button";
+import { Github, Linkedin } from "lucide-react";
 
 type Developer = {
   name: string;
@@ -14,17 +13,20 @@ export function DevelopersSection() {
     {
       name: "Gian Mathew Gutang",
       role: "UI / UX Designer",
-      image: matImg,
+      image:
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "Mel Angelo Cortes",
       role: "Software Engineer",
-      image: melImg,
+      image:
+        "april.jpg",
     },
     {
       name: "April Marie Rosales",
       role: "Backend Engineer",
-      image: aprilImg,
+      image:
+        "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=400&auto=format&fit=crop",
     },
   ];
 
@@ -40,7 +42,7 @@ export function DevelopersSection() {
           {developers.map((dev, index) => (
             <motion.div
               key={dev.name}
-              className="medical-card text-center space-y-4"
+              className="glass-card text-center space-y-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}

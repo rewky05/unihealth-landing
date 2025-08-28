@@ -33,6 +33,26 @@ export function FAQSection() {
     {
       question: "How do I migrate my past records?",
       answer: "UniHealth provides easy import tools to transfer records from most major healthcare systems. Our support team can also assist with bulk migrations for complex medical histories."
+    },
+    {
+      question: "What platforms are supported?",
+      answer: "UniHealth works on modern web browsers and iOS/Android via our mobile apps. Your data syncs securely across all devices."
+    },
+    {
+      question: "Can I share records with family or caregivers?",
+      answer: "Yes. You can grant read-only or time-limited access to trusted contacts and revoke it at any time from settings."
+    },
+    {
+      question: "How do online appointments work?",
+      answer: "Schedule a time, verify consent, and join the secure video session from the app. Notes and prescriptions are saved to your record."
+    },
+    {
+      question: "What if I lose my device?",
+      answer: "Log in from another device and use 'Sign out of all devices'. Data is encrypted at rest; biometrics/2FA prevent unauthorized access."
+    },
+    {
+      question: "How do I contact support?",
+      answer: "Use the in-app Help Center or email support@unihealth.example. We typically respond within 24 hours."
     }
   ];
 

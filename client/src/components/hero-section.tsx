@@ -13,7 +13,7 @@ export function HeroSection() {
   return (
     <section className="bg-background hero-section relative overflow-hidden">
       <div className="medical-container h-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center h-full">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center h-full">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

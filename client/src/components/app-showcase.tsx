@@ -29,7 +29,7 @@ export function AppShowcase() {
                     <div className="glass-card">
                       <h3 className="font-semibold mb-2 text-foreground">Upcoming Appointments</h3>
                       <div className="space-y-3">
-                        <div className="flex items-center space-x-3 bg-white/80 backdrop-blur-sm p-3 rounded-lg border border-primary/10">
+                        <div className="flex items-center space-x-3 bg-white/80 backdrop-blur-sm p-3 rounded-lg border border-gray-200">
                           <img 
                             src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40"
                             alt="Dr. Smith"
@@ -40,7 +40,7 @@ export function AppShowcase() {
                             <div className="text-xs text-muted-foreground">Cardiology - 2:30 PM</div>
                           </div>
                         </div>
-                        <div className="flex items-center space-x-3 bg-white/80 backdrop-blur-sm p-3 rounded-lg border border-primary/10">
+                        <div className="flex items-center space-x-3 bg-white/80 backdrop-blur-sm p-3 rounded-lg border border-gray-200">
                           <img 
                             src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40"
                             alt="Dr. Johnson"
