@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(222, 84%, 5%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(222, 84%, 5%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(222, 84%, 5%);
+  --primary: hsl(210, 100%, 40%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(210, 40%, 96%);
+  --secondary-foreground: hsl(222, 47%, 11%);
+  --muted: hsl(220, 13%, 96%);
+  --muted-foreground: hsl(215, 16%, 47%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(222, 47%, 11%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --ring: hsl(222, 84%, 5%);
+  --chart-1: hsl(210, 100%, 40%);
+  --chart-2: hsl(159, 100%, 36%);
+  --chart-3: hsl(42, 93%, 56%);
+  --chart-4: hsl(147, 78%, 42%);
+  --chart-5: hsl(341, 75%, 51%);
+  --sidebar: hsl(220, 13%, 96%);
+  --sidebar-foreground: hsl(222, 84%, 5%);
+  --sidebar-primary: hsl(210, 100%, 40%);
+  --sidebar-primary-foreground: hsl(210, 40%, 98%);
+  --sidebar-accent: hsl(210, 40%, 96%);
+  --sidebar-accent-foreground: hsl(222, 47%, 11%);
+  --sidebar-border: hsl(214, 32%, 91%);
+  --sidebar-ring: hsl(222, 84%, 5%);
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 1.5rem;
+  
+  /* Custom medical theme variables */
+  --healthcare-blue: hsl(210, 100%, 40%);
+  --healthcare-blue-dark: hsl(210, 100%, 25%);
+  --healthcare-blue-light: hsl(210, 100%, 96%);
+  --medical-grey: hsl(220, 13%, 96%);
+  --medical-text: hsl(222, 84%, 5%);
+  --medical-text-light: hsl(215, 16%, 47%);
+}
+
+.dark {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --popover: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --primary: hsl(210, 100%, 50%);
+  --primary-foreground: hsl(222, 84%, 5%);
+  --secondary: hsl(217, 32%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 32%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --accent: hsl(217, 32%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 32%, 17%);
+  --input: hsl(217, 32%, 17%);
+  --ring: hsl(212, 72%, 59%);
+  --chart-1: hsl(220, 70%, 50%);
+  --chart-2: hsl(160, 60%, 45%);
+  --chart-3: hsl(30, 80%, 55%);
+  --chart-4: hsl(280, 65%, 60%);
+  --chart-5: hsl(340, 75%, 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+
+  /* Medical design system classes */
+  .medical-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .medical-card {
+    @apply bg-card rounded-3xl p-6 medical-shadow;
+  }
+
+  .medical-hero-title {
+    @apply text-5xl lg:text-6xl font-bold leading-tight;
+  }
+
+  .medical-section-title {
+    @apply text-4xl font-bold mb-4;
+  }
+
+  .medical-section-subtitle {
+    @apply text-xl text-muted-foreground;
+  }
+
+  .medical-stat-number {
+    @apply text-5xl font-bold text-primary;
+  }
+
+  .medical-button-primary {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg transition-colors;
+  }
+  
+  .medical-button-primary:hover {
+    background-color: hsl(var(--primary) / 0.9);
+  }
+
+  .medical-button-secondary {
+    @apply border border-border text-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-muted transition-colors;
+  }
+
+  .medical-feature-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+    background-color: hsl(var(--primary) / 0.1);
+  }
+
+  .medical-team-photo {
+    @apply w-24 h-24 rounded-full object-cover shadow-lg;
+  }
+
+  .medical-section-padding {
+    @apply py-20;
+  }
+
+  .medical-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
