@@ -5,24 +5,24 @@
 
 :root {
   --background: hsl(0, 0%, 100%);
-  --foreground: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 100%, 20%);
   --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 100%, 20%);
   --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 100%, 20%);
   --primary: hsl(210, 100%, 40%);
-  --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(210, 40%, 96%);
-  --secondary-foreground: hsl(222, 47%, 11%);
-  --muted: hsl(220, 13%, 96%);
-  --muted-foreground: hsl(215, 16%, 47%);
-  --accent: hsl(210, 40%, 96%);
-  --accent-foreground: hsl(222, 47%, 11%);
-  --destructive: hsl(0, 84%, 60%);
-  --destructive-foreground: hsl(210, 40%, 98%);
-  --border: hsl(214, 32%, 91%);
-  --input: hsl(214, 32%, 91%);
-  --ring: hsl(222, 84%, 5%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 100%, 92%);
+  --secondary-foreground: hsl(210, 100%, 20%);
+  --muted: hsl(210, 100%, 96%);
+  --muted-foreground: hsl(210, 50%, 45%);
+  --accent: hsl(210, 100%, 92%);
+  --accent-foreground: hsl(210, 100%, 20%);
+  --destructive: hsl(210, 100%, 50%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 50%, 85%);
+  --input: hsl(210, 50%, 85%);
+  --ring: hsl(210, 100%, 40%);
   --chart-1: hsl(210, 100%, 40%);
   --chart-2: hsl(159, 100%, 36%);
   --chart-3: hsl(42, 93%, 56%);
@@ -41,13 +41,13 @@
   --font-mono: Menlo, monospace;
   --radius: 1.5rem;
   
-  /* Custom medical theme variables */
+  /* Custom medical theme variables - Blue, Light Blue, White only */
   --healthcare-blue: hsl(210, 100%, 40%);
   --healthcare-blue-dark: hsl(210, 100%, 25%);
   --healthcare-blue-light: hsl(210, 100%, 96%);
-  --medical-grey: hsl(220, 13%, 96%);
-  --medical-text: hsl(222, 84%, 5%);
-  --medical-text-light: hsl(215, 16%, 47%);
+  --glass-bg: hsla(210, 100%, 96%, 0.25);
+  --glass-border: hsla(210, 100%, 100%, 0.3);
+  --glass-backdrop: blur(10px);
 }
 
 .dark {
@@ -89,11 +89,26 @@
 
   /* Medical design system classes */
   .medical-shadow {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(33, 150, 243, 0.15);
   }
 
   .medical-card {
     @apply bg-card rounded-3xl p-6 medical-shadow;
+  }
+
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1);
+  }
+
+  .hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
   }
 
   .medical-hero-title {

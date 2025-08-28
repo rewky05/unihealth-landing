@@ -6,22 +6,22 @@ export function SecuritySection() {
       icon: Shield,
       title: "HIPAA & GDPR Compliant",
       description: "Full compliance with healthcare data protection regulations",
-      bgColor: "bg-green-100",
-      iconColor: "text-green-600"
+      bgColor: "bg-primary/10",
+      iconColor: "text-primary"
     },
     {
       icon: Lock,
       title: "End-to-End Encryption", 
       description: "Military-grade encryption protects all your medical data",
-      bgColor: "bg-blue-100",
-      iconColor: "text-blue-600"
+      bgColor: "bg-primary/20",
+      iconColor: "text-primary"
     },
     {
       icon: UserCheck,
       title: "Patients Own Their Data",
       description: "You maintain complete control over your medical records",
-      bgColor: "bg-purple-100", 
-      iconColor: "text-purple-600"
+      bgColor: "bg-secondary/50", 
+      iconColor: "text-primary"
     }
   ];
 
@@ -35,7 +35,7 @@ export function SecuritySection() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {securityFeatures.map((feature, index) => (
-            <div key={feature.title} className="text-center space-y-4" data-testid={`security-feature-${index}`}>
+            <div key={feature.title} className="text-center space-y-4 glass-card hover:shadow-lg transition-all duration-300" data-testid={`security-feature-${index}`}>
               <div className={`w-16 h-16 ${feature.bgColor} rounded-2xl flex items-center justify-center mx-auto`}>
                 <feature.icon className={`${feature.iconColor} w-8 h-8`} />
               </div>

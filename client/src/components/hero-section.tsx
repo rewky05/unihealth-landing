@@ -10,9 +10,9 @@ export function HeroSection() {
   };
 
   return (
-    <section className="bg-background medical-section-padding">
-      <div className="medical-container">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="bg-background hero-section relative overflow-hidden">
+      <div className="medical-container h-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center h-full">
           {/* Left Content */}
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-6">
@@ -60,14 +60,28 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Content - Doctors Image */}
-          <div className="relative animate-fade-in">
-            <img 
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-              alt="Professional medical team" 
-              className="rounded-2xl medical-shadow w-full h-auto"
-              data-testid="img-hero-doctors"
-            />
+          {/* Right Content - Doctors Image with Overlay */}
+          <div className="relative animate-fade-in h-full">
+            <div className="relative h-full min-h-[500px] lg:min-h-[600px]">
+              <img 
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=800" 
+                alt="Professional medical team" 
+                className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                data-testid="img-hero-doctors"
+              />
+              
+              {/* Glass Morphism Statistic Overlay */}
+              <div className="absolute bottom-6 right-6 glass-card min-w-[200px]" data-testid="glass-stats-overlay">
+                <div className="text-center space-y-2">
+                  <div className="text-3xl font-bold text-primary">265K</div>
+                  <div className="text-sm text-foreground font-medium">Patients Served</div>
+                  <div className="flex items-center justify-center space-x-1 pt-1">
+                    <div className="text-2xl font-bold text-primary">96%</div>
+                    <div className="text-xs text-muted-foreground">Satisfaction</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

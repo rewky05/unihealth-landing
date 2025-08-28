@@ -28,8 +28,8 @@ export function TestimonialsSection() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={testimonial.name} className="medical-card" data-testid={`testimonial-${index}`}>
-              <div className="flex text-yellow-400 mb-4">
+            <div key={testimonial.name} className="glass-card hover:shadow-xl transition-all duration-300" data-testid={`testimonial-${index}`}>
+              <div className="flex text-primary mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
@@ -41,7 +41,7 @@ export function TestimonialsSection() {
                 <img 
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
                   data-testid={`img-testimonial-${index}`}
                 />
                 <div>

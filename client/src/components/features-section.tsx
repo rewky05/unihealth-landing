@@ -60,7 +60,7 @@ export function FeaturesSection() {
           <h3 className="text-2xl font-bold text-foreground mb-8 text-center">For Patients</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {patientFeatures.map((feature, index) => (
-              <div key={feature.title} className="medical-card space-y-4" data-testid={`patient-feature-${index}`}>
+              <div key={feature.title} className="glass-card space-y-4 hover:shadow-lg transition-all duration-300" data-testid={`patient-feature-${index}`}>
                 <div className="medical-feature-icon">
                   <feature.icon className="text-primary w-6 h-6" />
                 </div>
@@ -76,7 +76,7 @@ export function FeaturesSection() {
           <h3 className="text-2xl font-bold text-foreground mb-8 text-center">For Doctors</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {doctorFeatures.map((feature, index) => (
-              <div key={feature.title} className="medical-card space-y-4" data-testid={`doctor-feature-${index}`}>
+              <div key={feature.title} className="glass-card space-y-4 hover:shadow-lg transition-all duration-300" data-testid={`doctor-feature-${index}`}>
                 <div className="medical-feature-icon">
                   <feature.icon className="text-primary w-6 h-6" />
                 </div>

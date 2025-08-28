@@ -58,8 +58,8 @@ export function AboutSection() {
               data-testid="img-about-doctor"
             />
             
-            {/* Profile Badge */}
-            <div className="absolute bottom-6 left-6 bg-white rounded-xl p-4 medical-shadow">
+            {/* Profile Badge with Glass Morphism */}
+            <div className="absolute bottom-6 left-6 glass-card">
               <div className="flex items-center space-x-3">
                 <img 
                   src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60"
@@ -68,9 +68,9 @@ export function AboutSection() {
                   data-testid="img-profile-badge"
                 />
                 <div>
-                  <div className="font-semibold text-sm">John</div>
+                  <div className="font-semibold text-sm text-foreground">John</div>
                   <div className="text-xs text-muted-foreground">Medical Director</div>
-                  <div className="flex text-yellow-400 text-xs mt-1">
+                  <div className="flex text-primary text-xs mt-1">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3 h-3 fill-current" />
                     ))}

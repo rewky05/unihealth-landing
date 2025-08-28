@@ -25,29 +25,29 @@ export function AppShowcase() {
                       <Bell className="text-muted-foreground w-5 h-5" />
                     </div>
 
-                    {/* Calendar View */}
-                    <div className="bg-muted rounded-xl p-4">
-                      <h3 className="font-semibold mb-2">Upcoming Appointments</h3>
+                    {/* Calendar View with Glass Effect */}
+                    <div className="glass-card">
+                      <h3 className="font-semibold mb-2 text-foreground">Upcoming Appointments</h3>
                       <div className="space-y-3">
-                        <div className="flex items-center space-x-3 bg-white p-3 rounded-lg">
+                        <div className="flex items-center space-x-3 bg-white/80 backdrop-blur-sm p-3 rounded-lg border border-primary/10">
                           <img 
                             src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40"
                             alt="Dr. Smith"
                             className="w-8 h-8 rounded-full object-cover"
                           />
                           <div className="flex-1">
-                            <div className="text-sm font-medium">Dr. Smith</div>
+                            <div className="text-sm font-medium text-foreground">Dr. Smith</div>
                             <div className="text-xs text-muted-foreground">Cardiology - 2:30 PM</div>
                           </div>
                         </div>
-                        <div className="flex items-center space-x-3 bg-white p-3 rounded-lg">
+                        <div className="flex items-center space-x-3 bg-white/80 backdrop-blur-sm p-3 rounded-lg border border-primary/10">
                           <img 
                             src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40"
                             alt="Dr. Johnson"
                             className="w-8 h-8 rounded-full object-cover"
                           />
                           <div className="flex-1">
-                            <div className="text-sm font-medium">Dr. Johnson</div>
+                            <div className="text-sm font-medium text-foreground">Dr. Johnson</div>
                             <div className="text-xs text-muted-foreground">General - Tomorrow</div>
                           </div>
                         </div>
