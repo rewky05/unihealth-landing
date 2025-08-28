@@ -1,4 +1,4 @@
-import { Heart, Bell } from "lucide-react";
+import { Heart, Bell, Apple, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function AppShowcase() {
@@ -71,20 +71,20 @@ export function AppShowcase() {
             {/* App Store Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                className="flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors"
+                className="flex items-center space-x-3 bg-black text-white px-6 py-6 rounded-xl hover:bg-gray-800 transition-colors"
                 data-testid="button-app-store"
               >
-                <i className="fab fa-apple text-2xl"></i>
+                <Apple className="w-5 h-5" />
                 <div className="text-left">
                   <div className="text-xs">Download on the</div>
                   <div className="font-semibold">App Store</div>
                 </div>
               </Button>
               <Button 
-                className="flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors"
+                className="flex items-center space-x-3 bg-black text-white px-6 py-6 rounded-xl hover:bg-gray-800 transition-colors"
                 data-testid="button-google-play"
               >
-                <i className="fab fa-google-play text-2xl"></i>
+                <Play className="w-5 h-5" />
                 <div className="text-left">
                   <div className="text-xs">Get it on</div>
                   <div className="font-semibold">Google Play</div>

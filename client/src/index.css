@@ -100,7 +100,7 @@
     background: var(--glass-bg);
     backdrop-filter: var(--glass-backdrop);
     border: 1px solid var(--glass-border);
-    border-radius: 1.5rem;
+    border-radius: 0.75rem;
     padding: 1.5rem;
     box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1);
   }
@@ -112,7 +112,7 @@
   }
 
   .medical-hero-title {
-    @apply text-5xl lg:text-6xl font-bold leading-tight;
+    @apply text-4xl lg:text-5xl font-bold leading-tight;
   }
 
   .medical-section-title {
@@ -144,9 +144,7 @@
     background-color: hsl(var(--primary) / 0.1);
   }
 
-  .medical-team-photo {
-    @apply w-24 h-24 rounded-full object-cover shadow-lg;
-  }
+  .medical-team-photo { }
 
   .medical-section-padding {
     @apply py-20;

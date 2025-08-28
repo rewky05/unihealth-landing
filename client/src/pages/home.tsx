@@ -11,6 +11,7 @@ import { TestimonialsSection } from "@/components/testimonials-section";
 import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
+import { DevelopersSection } from "@/components/developers-section";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <AppShowcase />
       <FeaturesSection />
       <SecuritySection />
+      <DevelopersSection />
       <TestimonialsSection />
       <FAQSection />
       <CTASection />

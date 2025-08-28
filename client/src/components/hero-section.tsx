@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Apple, Smartphone } from "lucide-react";
+import { Apple, Mail } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function HeroSection() {
   const scrollToWaitlist = () => {
@@ -14,13 +15,19 @@ export function HeroSection() {
       <div className="medical-container h-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center h-full">
           {/* Left Content */}
-          <div className="space-y-8 animate-fade-in">
-            <div className="space-y-6">
-              <h1 className="medical-hero-title text-foreground">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div className="space-y-5">
+              <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-foreground">
                 Unifying Health,<br />
                 <span className="text-primary">One Record</span> at a Time
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
                 UniHealth bridges patients and doctors with a unified medical record system. Empower patients with control, and help doctors deliver faster, safer diagnoses.
               </p>
             </div>
@@ -28,18 +35,19 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                className="medical-button-primary flex items-center justify-center space-x-2"
+                className="medical-button-primary flex items-center justify-center"
                 data-testid="button-download-app"
               >
                 <Apple className="w-5 h-5" />
                 <span>Download App</span>
               </Button>
               <Button 
-                className="medical-button-secondary"
+                className="medical-button-secondary flex items-center justify-center gap-2"
                 onClick={scrollToWaitlist}
                 data-testid="button-join-waitlist"
               >
-                Join Waitlist
+                <Mail className="w-5 h-5" />
+                <span>Join Waitlist</span>
               </Button>
             </div>
 
@@ -58,15 +66,21 @@ export function HeroSection() {
                 <div className="text-sm text-muted-foreground">Faster Diagnoses</div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Content - Doctors Image with Overlay */}
-          <div className="relative animate-fade-in h-full">
-            <div className="relative h-full min-h-[500px] lg:min-h-[600px]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="relative h-full"
+          >
+            <div className="relative h-full min-h-[500px] lg:min-h-[600px] lg:mr-[-2rem]">
               <img 
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=800" 
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=900" 
                 alt="Professional medical team" 
-                className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                className="absolute inset-0 w-full h-full object-cover rounded-lg"
                 data-testid="img-hero-doctors"
               />
               
@@ -82,7 +96,7 @@ export function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

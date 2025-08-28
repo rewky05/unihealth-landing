@@ -1,0 +1,899 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniHealth - Unifying Health, One Record at a Time</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                    chart: {
+                        "1": "var(--chart-1)",
+                        "2": "var(--chart-2)",
+                        "3": "var(--chart-3)",
+                        "4": "var(--chart-4)",
+                        "5": "var(--chart-5)",
+                    }
+                },
+                fontFamily: {
+                    sans: ["var(--font-sans)"],
+                    serif: ["var(--font-serif)"],
+                    mono: ["var(--font-mono)"],
+                }
+            },
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --background: hsl(0 0% 100%);
+            --foreground: hsl(222.2 84% 4.9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222.2 84% 4.9%);
+            --popover: hsl(0 0% 100%);
+            --popover-foreground: hsl(222.2 84% 4.9%);
+            --primary: hsl(210 100% 40%);
+            --primary-foreground: hsl(210 40% 98%);
+            --secondary: hsl(210 40% 96%);
+            --secondary-foreground: hsl(222.2 47.4% 11.2%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215.4 16.3% 46.9%);
+            --accent: hsl(210 40% 96%);
+            --accent-foreground: hsl(222.2 47.4% 11.2%);
+            --destructive: hsl(0 84.2% 60.2%);
+            --destructive-foreground: hsl(210 40% 98%);
+            --border: hsl(214.3 31.8% 91.4%);
+            --input: hsl(214.3 31.8% 91.4%);
+            --ring: hsl(222.2 84% 4.9%);
+            --radius: 1.5rem;
+            --font-sans: 'Inter', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--foreground);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [Fixed header with logo and navigation links] -->
+    <nav class="bg-white shadow-sm border-b border-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-primary-foreground text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-foreground">UniHealth</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-muted-foreground hover:text-foreground transition-colors">About</a>
+                    <a href="#features" class="text-muted-foreground hover:text-foreground transition-colors">Features</a>
+                    <a href="#security" class="text-muted-foreground hover:text-foreground transition-colors">Security</a>
+                    <a href="#testimonials" class="text-muted-foreground hover:text-foreground transition-colors">Testimonials</a>
+                    <a href="#contact" class="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+                    <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                        Book Appointment
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-foreground"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [Main hero with doctors and app mockup] -->
+    <section class="bg-background py-20 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <h1 class="text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+                            Unifying Health,<br>
+                            <span class="text-primary">One Record</span> at a Time
+                        </h1>
+                        <p class="text-xl text-muted-foreground leading-relaxed max-w-lg">
+                            UniHealth bridges patients and doctors with a unified medical record system. Empower patients with control, and help doctors deliver faster, safer diagnoses.
+                        </p>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition-colors flex items-center justify-center space-x-2">
+                            <i class="fab fa-apple"></i>
+                            <span>Download App</span>
+                        </button>
+                        <button class="border border-border text-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-muted transition-colors">
+                            Join Waitlist
+                        </button>
+                    </div>
+
+                    <!-- Mini Stats -->
+                    <div class="flex flex-wrap gap-8 pt-8 border-t border-border">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary">10K+</div>
+                            <div class="text-sm text-muted-foreground">Records Unified</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary">200+</div>
+                            <div class="text-sm text-muted-foreground">Doctors Connected</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary">95%</div>
+                            <div class="text-sm text-muted-foreground">Faster Diagnoses</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Doctors Image -->
+                <div class="relative">
+                    <!-- Team of diverse healthcare professionals in white coats -->
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Professional medical team" class="rounded-2xl shadow-2xl w-full h-auto" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- Stats Section -->
+    <!-- @COMPONENT: StatsSection [Professional credentials and statistics] -->
+    <section class="bg-muted py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center space-y-4">
+                    <div class="text-5xl font-bold text-primary">15+</div>
+                    <div class="text-lg font-medium text-foreground">Years of Experience</div>
+                    <div class="text-muted-foreground">Combined medical expertise across our platform</div>
+                </div>
+                <div class="text-center space-y-4">
+                    <div class="text-5xl font-bold text-primary">20+</div>
+                    <div class="text-lg font-medium text-foreground">Partner Clinics</div>
+                    <div class="text-muted-foreground">Healthcare facilities using UniHealth</div>
+                </div>
+                <div class="text-center space-y-4">
+                    <div class="text-5xl font-bold text-primary">100%</div>
+                    <div class="text-lg font-medium text-foreground">Patient Data Control</div>
+                    <div class="text-muted-foreground">You own and control your medical records</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: StatsSection -->
+
+    <!-- Highly Qualified Team -->
+    <!-- @COMPONENT: TeamSection [Doctor profiles with credentials] -->
+    <section class="bg-background py-20" id="team">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Highly Qualified Team</h2>
+                <p class="text-xl text-muted-foreground">Meet our highly qualified doctors</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center space-y-4">
+                    <!-- Female doctor with glasses and professional smile -->
+                    <img src="https://pixabay.com/get/g6be0a55a386cb5a25af0ffd4abda78c22b1cffc2201f3598ab85c965f54eb5d95271be0443e94e5b6676ef0403a465c9a30088696d77aa32cec7aaa5cba1f91e_1280.jpg" alt="Dr. Sophia Taylor" class="w-24 h-24 rounded-full mx-auto object-cover shadow-lg" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-foreground">Sophia Taylor</h3>
+                        <p class="text-muted-foreground">Chief Medical Officer</p>
+                        <div class="flex justify-center items-center space-x-2 mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                            </div>
+                            <span class="text-sm text-muted-foreground">(4.9)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center space-y-4">
+                    <!-- Young professional female doctor with stethoscope -->
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" alt="Dr. Jane Thomas" class="w-24 h-24 rounded-full mx-auto object-cover shadow-lg" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-foreground">Jane Thomas</h3>
+                        <p class="text-muted-foreground">Internal Medicine</p>
+                        <div class="flex justify-center items-center space-x-2 mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                            </div>
+                            <span class="text-sm text-muted-foreground">(4.8)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center space-y-4">
+                    <!-- Older male doctor with glasses and experience -->
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" alt="Dr. Mike Look" class="w-24 h-24 rounded-full mx-auto object-cover shadow-lg" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-foreground">Mike Look</h3>
+                        <p class="text-muted-foreground">Cardiology Specialist</p>
+                        <div class="flex justify-center items-center space-x-2 mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                            </div>
+                            <span class="text-sm text-muted-foreground">(5.0)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TeamSection -->
+
+    <!-- About UniHealth -->
+    <!-- @COMPONENT: AboutSection [Two-column layout with doctor image] -->
+    <section class="bg-muted py-20" id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-4xl font-bold text-foreground">We provide a wide range of medical services</h2>
+                    <p class="text-lg text-muted-foreground leading-relaxed">
+                        UniHealth is the Unified Patient Medical Record system designed to connect patients and doctors seamlessly. With UniHealth, patients own their medical history, while doctors gain reliable insights for better decisions.
+                    </p>
+                    
+                    <div class="space-y-8 pt-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-foreground mb-3">Preparing your Future</h3>
+                            <p class="text-muted-foreground">
+                                We treat each patient as family, providing comprehensive and compassionate healthcare services tailored to your individual needs.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-foreground mb-3">Achieving Your Vision</h3>
+                            <p class="text-muted-foreground">
+                                Planning for retirement is essential to your long-term financial well-being. Prioritize our experienced team collaborates with you to identify your personalized health goals and develop optimal solutions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service Icons -->
+                    <div class="flex space-x-12 pt-8">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-tooth text-primary text-xl"></i>
+                            </div>
+                            <span class="text-sm text-muted-foreground">Dental Care</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-brain text-primary text-xl"></i>
+                            </div>
+                            <span class="text-sm text-muted-foreground">Neurology</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-eye text-primary text-xl"></i>
+                            </div>
+                            <span class="text-sm text-muted-foreground">Ophthalmology</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <!-- Professional male doctor with stethoscope -->
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700" alt="Professional doctor consultation" class="rounded-2xl shadow-2xl w-full h-auto" />
+                    
+                    <!-- Profile Badge -->
+                    <div class="absolute bottom-6 left-6 bg-white rounded-xl p-4 shadow-lg">
+                        <div class="flex items-center space-x-3">
+                            <!-- Smaller doctor profile image -->
+                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60" alt="Dr. John Smith" class="w-12 h-12 rounded-full object-cover" />
+                            <div>
+                                <div class="font-semibold text-sm">John</div>
+                                <div class="text-xs text-muted-foreground">Medical Director</div>
+                                <div class="flex text-yellow-400 text-xs mt-1">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- Modern Technology Section -->
+    <!-- @COMPONENT: TechnologySection [App showcase and modern features] -->
+    <section class="bg-background py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <h2 class="text-4xl font-bold text-foreground">Modern Instrument</h2>
+                        <p class="text-lg text-muted-foreground leading-relaxed">
+                            UniHealth revolutionizes medical record management with cutting-edge technology that puts patients in control while giving doctors instant access to complete medical histories.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-foreground mb-3">Easy Billing System</h3>
+                            <p class="text-muted-foreground">
+                                Eliminate the joy of a patient meet our doctors team makes dealing with cutting edge.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold text-foreground mb-3">Qualified Nurses & Staff</h3>
+                            <p class="text-muted-foreground">
+                                Eliminate the joy of a patient meet our doctors team makes dealing with cutting edge.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="flex space-x-12 pt-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-foreground mb-1">265K</div>
+                            <div class="text-sm text-muted-foreground">Patients Served</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-foreground mb-1">96%</div>
+                            <div class="text-sm text-muted-foreground">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Nurse Image -->
+                <div class="relative">
+                    <!-- Professional nurse or healthcare worker with a warm smile -->
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700" alt="Professional healthcare nurse" class="rounded-2xl shadow-2xl w-full h-auto" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TechnologySection -->
+
+    <!-- How It Works -->
+    <!-- @COMPONENT: HowItWorksSection [4-step process with icons] -->
+    <section class="bg-muted py-20" id="how-it-works">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">How UniHealth Works</h2>
+                <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Simple steps to unified healthcare records
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-download text-primary-foreground text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold text-foreground">Download App</h3>
+                        <p class="text-muted-foreground">Patient downloads UniHealth from App Store or Google Play</p>
+                    </div>
+                </div>
+
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-sync text-primary-foreground text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold text-foreground">Sync Records</h3>
+                        <p class="text-muted-foreground">Medical history securely synced and unified in one place</p>
+                    </div>
+                </div>
+
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-user-md text-primary-foreground text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold text-foreground">Doctor Access</h3>
+                        <p class="text-muted-foreground">Doctor accesses complete records instantly with patient permission</p>
+                    </div>
+                </div>
+
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-heartbeat text-primary-foreground text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold text-foreground">Better Care</h3>
+                        <p class="text-muted-foreground">Faster, more accurate diagnosis and treatment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HowItWorksSection -->
+
+    <!-- Treatment is Easy Section -->
+    <!-- @COMPONENT: TreatmentSection [App mockup showcase] -->
+    <section class="bg-background py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content - Phone Mockup -->
+                <div class="relative">
+                    <div class="relative max-w-sm mx-auto">
+                        <!-- Phone Frame -->
+                        <div class="bg-gray-800 p-2 rounded-3xl shadow-2xl">
+                            <div class="bg-white rounded-2xl overflow-hidden">
+                                <!-- Phone Screen Content -->
+                                <div class="px-4 py-6 space-y-4">
+                                    <!-- Header -->
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-heartbeat text-primary-foreground text-sm"></i>
+                                            </div>
+                                            <span class="font-semibold">UniHealth</span>
+                                        </div>
+                                        <i class="fas fa-bell text-muted-foreground"></i>
+                                    </div>
+
+                                    <!-- Calendar View -->
+                                    <div class="bg-muted rounded-xl p-4">
+                                        <h3 class="font-semibold mb-2">Upcoming Appointments</h3>
+                                        <div class="space-y-3">
+                                            <div class="flex items-center space-x-3 bg-white p-3 rounded-lg">
+                                                <!-- Doctor avatar -->
+                                                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40" alt="Dr. Smith" class="w-8 h-8 rounded-full object-cover" />
+                                                <div class="flex-1">
+                                                    <div class="text-sm font-medium">Dr. Smith</div>
+                                                    <div class="text-xs text-muted-foreground">Cardiology - 2:30 PM</div>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-3 bg-white p-3 rounded-lg">
+                                                <!-- Doctor avatar -->
+                                                <img src="https://pixabay.com/get/gfd3e398b5f7763c1d03a55eaa06eea5ce576d82a4c8f67eed6aa90267fef1029fe67c89c86143bf2cbed213892910f47e8ed887822b3db6fa52cbbb5bc93660c_1280.jpg" alt="Dr. Johnson" class="w-8 h-8 rounded-full object-cover" />
+                                                <div class="flex-1">
+                                                    <div class="text-sm font-medium">Dr. Johnson</div>
+                                                    <div class="text-xs text-muted-foreground">General - Tomorrow</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-4xl font-bold text-foreground mb-4">Treatment is Easy with UniHealth</h2>
+                        <p class="text-lg text-muted-foreground leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+
+                    <!-- App Store Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#" class="flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors">
+                            <i class="fab fa-apple text-2xl"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Download on the</div>
+                                <div class="font-semibold">App Store</div>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors">
+                            <i class="fab fa-google-play text-2xl"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Get it on</div>
+                                <div class="font-semibold">Google Play</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TreatmentSection -->
+
+    <!-- Features Section -->
+    <!-- @COMPONENT: FeaturesSection [Grid layout of feature cards] -->
+    <section class="bg-muted py-20" id="features">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Features</h2>
+                <p class="text-xl text-muted-foreground">Powerful features for patients and doctors</p>
+            </div>
+
+            <!-- For Patients -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-foreground mb-8 text-center">For Patients</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-card p-6 rounded-2xl shadow-sm space-y-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-folder-open text-primary text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-foreground">Unified Records</h4>
+                        <p class="text-muted-foreground text-sm">All medical records in one secure place</p>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-2xl shadow-sm space-y-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-share-alt text-primary text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-foreground">Easy Sharing</h4>
+                        <p class="text-muted-foreground text-sm">Share records with doctors instantly</p>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-2xl shadow-sm space-y-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-primary text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-foreground">Secure Access</h4>
+                        <p class="text-muted-foreground text-sm">Access your health data anywhere, anytime</p>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-2xl shadow-sm space-y-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-bell text-primary text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-foreground">Smart Reminders</h4>
+                        <p class="text-muted-foreground text-sm">Never miss appointments or medications</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- For Doctors -->
+            <div>
+                <h3 class="text-2xl font-bold text-foreground mb-8 text-center">For Doctors</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-card p-6 rounded-2xl shadow-sm space-y-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-history text-primary text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-foreground">Complete History</h4>
+                        <p class="text-muted-foreground text-sm">Access complete patient medical history</p>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-2xl shadow-sm space-y-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-tachometer-alt text-primary text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-foreground">Efficient Workflow</h4>
+                        <p class="text-muted-foreground text-sm">Streamlined diagnosis and treatment process</p>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-2xl shadow-sm space-y-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-primary text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-foreground">Reduced Errors</h4>
+                        <p class="text-muted-foreground text-sm">Minimize medical errors with complete data</p>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-2xl shadow-sm space-y-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-users text-primary text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-foreground">Collaboration</h4>
+                        <p class="text-muted-foreground text-sm">Seamless collaboration with specialists</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FeaturesSection -->
+
+    <!-- Security & Compliance -->
+    <!-- @COMPONENT: SecuritySection [Trust and compliance badges] -->
+    <section class="bg-background py-20" id="security">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Security & Compliance</h2>
+                <p class="text-xl text-muted-foreground">Your health data is protected with industry-leading security</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-shield-alt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground">HIPAA & GDPR Compliant</h3>
+                    <p class="text-muted-foreground">Full compliance with healthcare data protection regulations</p>
+                </div>
+
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-lock text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground">End-to-End Encryption</h3>
+                    <p class="text-muted-foreground">Military-grade encryption protects all your medical data</p>
+                </div>
+
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-user-check text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground">Patients Own Their Data</h3>
+                    <p class="text-muted-foreground">You maintain complete control over your medical records</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SecuritySection -->
+
+    <!-- Testimonials -->
+    <!-- @COMPONENT: TestimonialsSection [Patient and doctor testimonials] -->
+    <section class="bg-muted py-20" id="testimonials">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">What Our Users Say</h2>
+                <p class="text-xl text-muted-foreground">Trusted by patients and doctors worldwide</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Patient Testimonial -->
+                <div class="bg-card p-8 rounded-2xl shadow-sm">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-lg text-muted-foreground mb-6 leading-relaxed">
+                        "I no longer worry about carrying records — UniHealth keeps everything organized for me. It's made my doctor visits so much more efficient."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <!-- Happy patient testimonial photo -->
+                        <img src="https://pixabay.com/get/g385000548a922491bf9371343124fe443f6ae67b81d0a18625259406baca8c6365e93d5f4cebbe2d47e9d24fe492a505e5d2463b7286c6292c2053c2142d5d99_1280.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover" />
+                        <div>
+                            <div class="font-semibold text-foreground">Sarah Johnson</div>
+                            <div class="text-muted-foreground text-sm">Patient</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doctor Testimonial -->
+                <div class="bg-card p-8 rounded-2xl shadow-sm">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-lg text-muted-foreground mb-6 leading-relaxed">
+                        "Having full history at my fingertips improves treatment accuracy. UniHealth has revolutionized how I practice medicine."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <!-- Professional doctor testimonial photo -->
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60" alt="Dr. Michael Chen" class="w-12 h-12 rounded-full object-cover" />
+                        <div>
+                            <div class="font-semibold text-foreground">Dr. Michael Chen</div>
+                            <div class="text-muted-foreground text-sm">Cardiologist</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TestimonialsSection -->
+
+    <!-- FAQ Section -->
+    <!-- @COMPONENT: FAQSection [Accordion style FAQ] -->
+    <section class="bg-background py-20" id="faq">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-muted-foreground">Get answers to common questions about UniHealth</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Items -->
+                <div class="border border-border rounded-xl">
+                    <button class="w-full flex items-center justify-between p-6 text-left hover:bg-muted transition-colors" data-implementation="FAQ accordion toggle functionality">
+                        <span class="font-semibold text-foreground">Is my data secure?</span>
+                        <i class="fas fa-chevron-down text-muted-foreground"></i>
+                    </button>
+                    <div class="px-6 pb-6 text-muted-foreground" data-mock="true">
+                        Yes, UniHealth uses military-grade encryption and is fully HIPAA and GDPR compliant. Your medical data is protected with the highest security standards.
+                    </div>
+                </div>
+
+                <div class="border border-border rounded-xl">
+                    <button class="w-full flex items-center justify-between p-6 text-left hover:bg-muted transition-colors">
+                        <span class="font-semibold text-foreground">How much does it cost?</span>
+                        <i class="fas fa-chevron-down text-muted-foreground"></i>
+                    </button>
+                </div>
+
+                <div class="border border-border rounded-xl">
+                    <button class="w-full flex items-center justify-between p-6 text-left hover:bg-muted transition-colors">
+                        <span class="font-semibold text-foreground">Can any doctor access my records?</span>
+                        <i class="fas fa-chevron-down text-muted-foreground"></i>
+                    </button>
+                </div>
+
+                <div class="border border-border rounded-xl">
+                    <button class="w-full flex items-center justify-between p-6 text-left hover:bg-muted transition-colors">
+                        <span class="font-semibold text-foreground">Is UniHealth available worldwide?</span>
+                        <i class="fas fa-chevron-down text-muted-foreground"></i>
+                    </button>
+                </div>
+
+                <div class="border border-border rounded-xl">
+                    <button class="w-full flex items-center justify-between p-6 text-left hover:bg-muted transition-colors">
+                        <span class="font-semibold text-foreground">How do I migrate my past records?</span>
+                        <i class="fas fa-chevron-down text-muted-foreground"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FAQSection -->
+
+    <!-- Final CTA -->
+    <!-- @COMPONENT: FinalCTASection [Call to action with app download] -->
+    <section class="bg-primary py-20" id="contact">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <h2 class="text-4xl font-bold text-primary-foreground">Take Control of Your Health with UniHealth</h2>
+                    <p class="text-xl text-primary-foreground/80">Join thousands of patients and doctors using UniHealth for better healthcare</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2">
+                        <i class="fab fa-apple"></i>
+                        <span>Download App</span>
+                    </button>
+                    <button class="border-2 border-white text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-primary transition-colors">
+                        Join Waitlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FinalCTASection -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [Company info and links] -->
+    <footer class="bg-foreground text-background py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo and Tagline -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-primary-foreground text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold">UniHealth</span>
+                    </div>
+                    <p class="text-background/70">Unifying Health, One Record at a Time</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="font-semibold">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="#about" class="block text-background/70 hover:text-background transition-colors">About</a>
+                        <a href="#features" class="block text-background/70 hover:text-background transition-colors">Features</a>
+                        <a href="#security" class="block text-background/70 hover:text-background transition-colors">Security</a>
+                        <a href="#testimonials" class="block text-background/70 hover:text-background transition-colors">Testimonials</a>
+                    </div>
+                </div>
+
+                <!-- Legal -->
+                <div class="space-y-4">
+                    <h4 class="font-semibold">Legal</h4>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-background/70 hover:text-background transition-colors">Privacy Policy</a>
+                        <a href="#" class="block text-background/70 hover:text-background transition-colors">Terms of Service</a>
+                        <a href="#" class="block text-background/70 hover:text-background transition-colors">HIPAA Compliance</a>
+                        <a href="#" class="block text-background/70 hover:text-background transition-colors">Contact Us</a>
+                    </div>
+                </div>
+
+                <!-- Social -->
+                <div class="space-y-4">
+                    <h4 class="font-semibold">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center hover:bg-background/20 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center hover:bg-background/20 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center hover:bg-background/20 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-background/20 mt-12 pt-8 text-center">
+                <p class="text-background/70">&copy; 2024 UniHealth. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // Simple FAQ accordion functionality
+            // TODO: Implement full FAQ accordion functionality in React
+            document.addEventListener('DOMContentLoaded', function() {
+                // Basic smooth scrolling for navigation links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

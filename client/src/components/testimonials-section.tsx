@@ -19,7 +19,7 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="bg-muted medical-section-padding" id="testimonials">
+    <section className="bg-background medical-section-padding" id="testimonials">
       <div className="medical-container">
         <div className="text-center mb-16">
           <h2 className="medical-section-title text-foreground">What Our Users Say</h2>

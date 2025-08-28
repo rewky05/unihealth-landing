@@ -53,25 +53,26 @@ export function CTASection() {
   };
 
   return (
-    <section className="bg-primary medical-section-padding" id="contact">
+    <section className="bg-background medical-section-padding" id="contact">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8">
           <div className="space-y-4">
-            <h2 className="text-4xl font-bold text-primary-foreground">Take Control of Your Health with UniHealth</h2>
-            <p className="text-xl text-primary-foreground/80">Join thousands of patients and doctors using UniHealth for better healthcare</p>
+            <h2 className="text-4xl font-bold text-foreground">Take Control of Your Health with UniHealth</h2>
+            <p className="text-xl text-muted-foreground">Join thousands of patients and doctors using UniHealth for better healthcare</p>
           </div>
 
           {!showWaitlistForm ? (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                className="bg-white text-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2"
+                className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition-colors flex items-center justify-center space-x-2"
                 data-testid="button-download-app-cta"
               >
                 <Apple className="w-5 h-5" />
                 <span>Download App</span>
               </Button>
               <Button 
-                className="border-2 border-white text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-primary transition-colors"
+                variant="outline"
+                className="px-8 py-4 rounded-xl font-semibold text-lg"
                 onClick={() => setShowWaitlistForm(true)}
                 data-testid="button-join-waitlist-cta"
               >

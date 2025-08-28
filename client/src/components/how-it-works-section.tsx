@@ -25,7 +25,7 @@ export function HowItWorksSection() {
   ];
 
   return (
-    <section className="bg-muted medical-section-padding" id="how-it-works">
+    <section className="bg-background medical-section-padding" id="how-it-works">
       <div className="medical-container">
         <div className="text-center mb-16">
           <h2 className="medical-section-title text-foreground">How UniHealth Works</h2>

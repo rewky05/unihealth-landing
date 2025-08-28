@@ -48,7 +48,7 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section className="bg-muted medical-section-padding" id="features">
+    <section className="bg-background medical-section-padding" id="features">
       <div className="medical-container">
         <div className="text-center mb-16">
           <h2 className="medical-section-title text-foreground">Features</h2>

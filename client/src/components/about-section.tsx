@@ -2,7 +2,7 @@ import { Eye, Brain, Heart, Star } from "lucide-react";
 
 export function AboutSection() {
   return (
-    <section className="bg-muted medical-section-padding" id="about">
+    <section className="bg-background medical-section-padding" id="about">
       <div className="medical-container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
